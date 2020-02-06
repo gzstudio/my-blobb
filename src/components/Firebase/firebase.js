@@ -2,14 +2,6 @@ import app from 'firebase/app';
 import 'firebase/auth'
 import 'firebase/database'
 
-// const config = {
-//   apiKey: 'AIzaSyCGrGklL3HCcqcx6TjGQ9QCMsYKM1qkfPw',
-//   authDomain: 'my-blobb.firebaseapp.com',
-//   databaseURL: 'https://my-blobb.firebaseio.com',
-//   projectId: 'my-blobb',
-//   storageBucket: 'my-blobb.appspot.com',
-//   messagingSenderId: '878266767138',
-// }; 
 
 // const prodConfig = {
 //     apiKey: process.env.REACT_APP_PROD_API_KEY,

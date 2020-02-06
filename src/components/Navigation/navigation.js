@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 import SignOutButton from '../SignOut/signout';
 import * as ROUTES from '../../constants/routes';
 
 import { AuthUserContext } from '../Session';
+import { Navbar, Nav } from 'rsuite';
+
 
 const Navigation = () => (
     <div>
@@ -18,20 +19,25 @@ const Navigation = () => (
   );
 
   const NavigationAuth = () => (
-    <ul>
-      <li>
+    <Navbar>
+     <Navbar.Body>
+     <Nav>
+     <Nav.Item>
         <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
+      </Nav.Item>
+      <Nav.Item>
         <Link to={ROUTES.HOME}>Home</Link>
-      </li>
-      <li>
+      </Nav.Item>
+      <Nav.Item>
         <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </li>
-      <li>
+      </Nav.Item>
+      <Nav.Item>
         <SignOutButton />
-      </li>
-    </ul>
+      </Nav.Item>
+     </Nav>
+     </Navbar.Body>
+
+    </Navbar>
   );
 
   const NavigationNonAuth = () => (
