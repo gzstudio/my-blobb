@@ -6,12 +6,11 @@ import LandingPage from '../src/components/Landing/landing';
 import SignUpPage from '../src/components/SignUp/signup';
 import SignInPage from '../src/components/SignIn/signin';
 import HomePage from '../src/components/Home/home';
-import AccountPage from '../src/components/Account/account';
+// import AccountPage from '../src/components/Account/account';
 
 import * as ROUTES from '../src/constants/routes'
-import { withFirebase } from '../src/components/Firebase'
 
-import { AuthUserContext } from '../src/components/Session';
+import { withAuthentication } from '../src/components/Session';
 
 const App = () => (
     <Router>
@@ -22,7 +21,7 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
     </div>
     </Router>
 );
@@ -64,4 +63,4 @@ const App = () => (
 //     )
 //   }
 // }
-export default withFirebase(App);
+export default withAuthentication(App);
