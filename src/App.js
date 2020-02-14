@@ -6,61 +6,27 @@ import LandingPage from '../src/components/Landing/landing';
 import SignUpPage from '../src/components/SignUp/signup';
 import SignInPage from '../src/components/SignIn/signin';
 import HomePage from '../src/components/Home/home';
-// import AccountPage from '../src/components/Account/account';
+import {Container, Header, Content, Footer} from 'rsuite';
 
 import * as ROUTES from '../src/constants/routes'
 
 import { withAuthentication } from '../src/components/Session';
+import BlobbHome from './components/Blobb/blobbHome';
+import './App.css';
 
 const App = () => (
     <Router>
-    <div>
-      <Navigation />
-      <hr />
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.HOME} component={HomePage} />
-      {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
-    </div>
+    <Container>
+      <Header><Navigation /></Header>
+      <Content className="content">
+        <Route exact path={ROUTES.LANDING} component={LandingPage} />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.HOME} component={HomePage} />
+        <Route path={ROUTES.BLOBBHOME + "/:petId"} component={BlobbHome} />
+      </Content>
+    </Container>
     </Router>
 );
 
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       authUser: null
-//     };
-//   }
-
-//   componentDidMount() {
-//     this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
-//       authUser
-//         ? this.setState({ authUser })
-//         : this.setState({ authUser: null});
-//     });
-//   }
-
-//   componentWillUnmount() {
-//     this.listener();
-//   }
-
-//   render() {
-//     return (
-//       <AuthUserContext.Provider value={this.state.authUser}>
-//         <Router>
-//           <div>
-//             <Navigation />
-            
-//             <hr/>
-            
-//           </div>
-//         </Router>
-//       </AuthUserContext.Provider>
-      
-//     )
-//   }
-// }
 export default withAuthentication(App);

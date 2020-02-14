@@ -6,11 +6,17 @@ import { SignUpLink } from '../SignUp/signup';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import { FlexboxGrid, Button, Form, FormGroup, ControlLabel, FormControl, Input } from 'rsuite'
+import './form.css';
 const SignIn = () => (
     <div>
-        <h1>Sign In</h1>
-        <SignInForm />
-        <SignUpLink />
+        <FlexboxGrid justify="center">
+            <FlexboxGrid.Item colspan={12}>
+                <h1>Sign In</h1>
+                <SignInForm />
+                <SignUpLink />
+                </FlexboxGrid.Item>
+        </FlexboxGrid>
     </div>
 );
 
@@ -32,7 +38,10 @@ class SignInFormBase extends React.Component {
 
         this.props.firebase
             .doSignInWithEmailAndPassword(email, password)
-            .then(() => {
+            .then((a1, a2, a3) => {
+                console.log(a1);
+                console.log(a2);
+                console.log(a3);
                 this.setState({ ...INITIAL_STATE});
                 this.props.history.push(ROUTES.HOME);
             })
@@ -44,35 +53,32 @@ class SignInFormBase extends React.Component {
     };
 
     onChange = event => {
+
         this.setState({ [event.target.name]: event.target.value });
     };
 
     render() {
         const { email, password, error } = this.state;
-
         const isInvalid = password === '' || email === '';
 
         return(
-            <form onSubmit={this.onSubmit}>
-                <input
-                name="email"
-                value={email}
-                onChange={this.onChange}
-                type="text"
-                placeholder="Email Address"
-                />
-                <input
-                name="password"
-                value={password}
-                onChange={this.onChange}
-                type="password"
-                placeholder="Password"
-                />
-                <button disabled={isInvalid} type="submit">
+            
+            <Form onSubmit={this.onSubmit}>
+                <FormGroup>
+                    <ControlLabel>Email</ControlLabel>
+                    <input name="email" value={email} onChange={this.onChange} type="text" placeholder="Email Address" />
+                </FormGroup>
+                <FormGroup>
+                    <ControlLabel>Password</ControlLabel>
+                    <input name="password" value={password} onChange={this.onChange} type="password" placeholder="Password" />
+                </FormGroup>
+                <Button color="blue" disabled={isInvalid} type="submit">
                 Sign In
-                </button>
+                </Button>
                 {error && <p>{error.message}</p>}
-            </form>
+                   
+            </Form>
+            
         );
     }
 }

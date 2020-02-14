@@ -1,9 +1,8 @@
 import React from 'react';
 import { withFirebase } from '../Firebase';
+import { Nav } from 'rsuite';
 
 const SignOutButton = ({ firebase }) => (
-    <button type="button" onClick={firebase.doSignOut}>
-      Sign Out
-    </button>
+  <Nav.Item onClick={firebase.doSignOut}>Sign Out</Nav.Item>
   );
 export default withFirebase(SignOutButton);

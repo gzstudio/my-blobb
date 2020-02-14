@@ -7,7 +7,6 @@ import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 import { Navbar, Nav } from 'rsuite';
 
-
 const Navigation = () => (
     <div>
     <AuthUserContext.Consumer>
@@ -17,38 +16,32 @@ const Navigation = () => (
     </AuthUserContext.Consumer>
   </div>
   );
-
+  const NavLink = props => <Nav.Item componentClass={Link} {...props} />;
   const NavigationAuth = () => (
-    <Navbar>
-     <Navbar.Body>
+    <Navbar appearance="inverse">
+     
      <Nav>
-     <Nav.Item>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </Nav.Item>
-      <Nav.Item>
+     
+        <NavLink to={ROUTES.HOME}>Home</NavLink>
+      
         <SignOutButton />
-      </Nav.Item>
+      
      </Nav>
-     </Navbar.Body>
+     
 
     </Navbar>
   );
 
   const NavigationNonAuth = () => (
-    <ul>
-      <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
-    </ul>
+    <Navbar appearance="inverse">
+      
+      <Nav>
+      <NavLink to={ROUTES.LANDING}>Home</NavLink>
+      <NavLink to={ROUTES.SIGN_IN}>Sign In</NavLink>
+      </Nav>
+        
+    
+    </Navbar>
   );
 
 export default Navigation;
