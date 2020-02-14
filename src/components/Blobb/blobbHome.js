@@ -2,7 +2,7 @@ import React from 'react'
 import Blobb from '../Blobb/blobb'
 import Letter from '../Blobb/letter'
 import firebase from 'firebase';
-import { Progress, Button, FlexboxGrid, Grid, Row, Col, ButtonToolbar } from 'rsuite';
+import { Progress, Button, FlexboxGrid, ButtonToolbar } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import withAuthorization from '../Session/withAuthorization';
 import './blobb.css';
@@ -39,10 +39,10 @@ class BlobbHome extends React.Component {
         const myInteval = setInterval(() => {
             let petData = JSON.parse(JSON.stringify(this.state.petdata));
             if(this.state.petdata.food >= 0) {
-                petData.food = this.state.petdata.food - .25
+                petData.food = this.state.petdata.food - 2.5
             }
             if(this.state.petdata.fun >=0) {
-                petData.fun = this.state.petdata.fun - .5
+                petData.fun = this.state.petdata.fun - 3
             }
             if(this.state.petdata.food <= 0 || this.state.petdata.fun <= 0) {            
                 console.log("ran away")
@@ -76,8 +76,6 @@ class BlobbHome extends React.Component {
 
         
     }
-
-
     
     feed = () => {
         let petData = JSON.parse(JSON.stringify(this.state.petdata))

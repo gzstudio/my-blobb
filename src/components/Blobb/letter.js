@@ -27,13 +27,15 @@ class Letter extends React.Component {
             </div>
             <Modal show={this.state.isOpen} backdrop={backdrop} onHide={this.toggleModal}>
                         <Modal.Header>
-                            <Modal.Title>Bye!</Modal.Title>
+                            
                         </Modal.Header>
-                        <Modal.Body>
-                        <p>Since you do not take care of me well, I've decided to run away.</p>
+                        <Modal.Body classPrefix="text-center">
+                        <br/>
+                        <p>Since you do not take care of me well, I'm just gonna run away.</p>
                         <p>
                         Good luck finding new pet.
                         </p>
+                        <br/>
                         
             </Modal.Body>
             </Modal>

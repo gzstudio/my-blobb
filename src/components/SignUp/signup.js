@@ -4,9 +4,10 @@ import {Link, withRouter} from 'react-router-dom';
 import {withFirebase} from '../Firebase'
 import * as ROUTES from '../../constants/routes';
 
-import { FlexboxGrid, Button, Form, FormGroup, ControlLabel, FormControl, Input } from 'rsuite'
+import { FlexboxGrid, Button, Form, FormGroup, ControlLabel} from 'rsuite'
 
 import './form.css';
+
 const SignUp = () => (
     <div>
         <FlexboxGrid justify="center">
@@ -37,20 +38,6 @@ class SignUpFormBase extends React.Component {
 
         this.props.firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
-        .then(authUser => {
-            return this.props.firebase
-                .user(authUser.user.uid)
-                .set({
-                    username,
-                    email
-                });
-                if(authUser) {
-                    authUser.updateProfile({
-                        displayName: username
-                    })
-                }
-                
-        })
         .then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
@@ -67,7 +54,6 @@ class SignUpFormBase extends React.Component {
 
     render() {
         const {
-            username,
             email,
             passwordOne,
             passwordTwo,
@@ -77,21 +63,10 @@ class SignUpFormBase extends React.Component {
         const isInvalid =
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
-            email === '' ||
-            username === '';
+            email === '' 
 
         return(
             <Form onSubmit={this.onSubmit}>
-            <FormGroup>
-                <ControlLabel>Full Name</ControlLabel>
-                <input
-                name="username"
-                value={username}
-                onChange={this.onChange}
-                type="text"
-                placeholder="Full Name"
-                />
-            </FormGroup>
             <FormGroup>
                 <ControlLabel>Email Address</ControlLabel>
                 <input
@@ -131,6 +106,7 @@ class SignUpFormBase extends React.Component {
 
 const SignUpLink = () => (
     <p>
+        <br />
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </p>
 );

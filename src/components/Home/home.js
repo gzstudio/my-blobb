@@ -1,6 +1,5 @@
 import React from 'react';
 
-import * as ROUTES from '../../constants/routes';
 import firebase from 'firebase';
 import withAuthorization from '../Session/withAuthorization';
 
@@ -105,16 +104,14 @@ class home extends React.Component {
         const petExist = this.state.petExist
         return (
             <div>
-                
                 <FlexboxGrid justify="center">
-                    <FlexboxGrid.Item colspan={12}>
+                    <FlexboxGrid.Item colspan={12} classPrefix="text-center">
                     
                     {petExist ? (
                         <div><h1><Link to={`/blobb-home/` + this.state.id}>Visit your pet</Link></h1></div>
                         ) : ( <div>
-                        <h1>Hello {this.state.currentUser} </h1>
-                        <br />
-                        <p>The Home Page is accessible by every signed in user.</p>
+                        <h1>👋🏼 Hello!</h1>
+                        <p>Welcome to My Blobb app.<br/> Would you like to adop a lovely pet today?</p>
                         <br />
                         <Button size="lg" color="blue" onClick={this.toggleModal}>Adopt a pet</Button>
                         </div> ) 

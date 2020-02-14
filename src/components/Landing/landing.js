@@ -3,11 +3,10 @@ import { FlexboxGrid } from 'rsuite';
 
 const Landing = () => (
 <FlexboxGrid justify="center">
-    <FlexboxGrid.Item colspan={12}>
-    <h1>Hello!</h1>
+    <FlexboxGrid.Item colspan={12} classPrefix="text-center">
+    <h1>👋🏼 Hello!</h1>
     <p>Please sign in to adop a pet</p>
     </FlexboxGrid.Item>
-    
 </FlexboxGrid>
 )
 
